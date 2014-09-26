@@ -1,0 +1,90 @@
+name = White
+description = White theme
+core = 7.x
+base theme = bootstrap
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[top]     = 'Top'
+regions[nav_top_right]     = 'Nav top right'
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[full-top]         = 'Full top'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[lower_marketing]= 'Lower marketing'
+regions[footer]         = 'Footer'
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+regions[marketing_container]    = 'Marketing container'
+
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] = css/bootstrap.css
+stylesheets[all][] = css/custom_theme.css
+
+
+; For information on choosing the desired method, please read the Drupal
+; Bootstrap sub-theme "how-to" documentation:
+; https://drupal.org/node/1978010
+
+; ;----------------------------------
+; ; METHOD 1: Bootstrap Source Files
+; ;----------------------------------
+; 
+; ;;;;;;;;;;;;;;;;;;;;;
+; ;; Scripts
+; ;;;;;;;;;;;;;;;;;;;;;
+; 
+; scripts[] = 'bootstrap/js/affix.js'
+; scripts[] = 'bootstrap/js/alert.js'
+; scripts[] = 'bootstrap/js/button.js'
+; scripts[] = 'bootstrap/js/carousel.js'
+; scripts[] = 'bootstrap/js/collapse.js'
+; scripts[] = 'bootstrap/js/dropdown.js'
+; scripts[] = 'bootstrap/js/modal.js'
+; scripts[] = 'bootstrap/js/tooltip.js'
+; scripts[] = 'bootstrap/js/popover.js'
+; scripts[] = 'bootstrap/js/scrollspy.js'
+; scripts[] = 'bootstrap/js/tab.js'
+; scripts[] = 'bootstrap/js/transition.js'
+;
+;
+; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
+; settings[bootstrap_cdn] = ''
+
+; settings[bootstrap_cdn] = ''
+
+; scripts[] = 'assets/javascripts/bootstrap/affix.js'
+; scripts[] = 'assets/javascripts/bootstrap/alert.js'
+; scripts[] = 'assets/javascripts/bootstrap/button.js'
+; scripts[] = 'assets/javascripts/bootstrap/carousel.js'
+; scripts[] = 'assets/javascripts/bootstrap/collapse.js'
+; scripts[] = 'assets/javascripts/bootstrap/dropdown.js'
+; scripts[] = 'assets/javascripts/bootstrap/modal.js'
+; scripts[] = 'assets/javascripts/bootstrap/tooltip.js'
+; scripts[] = 'assets/javascripts/bootstrap/popover.js'
+; scripts[] = 'assets/javascripts/bootstrap/scrollspy.js'
+; scripts[] = 'assets/javascripts/bootstrap/tab.js'
+; scripts[] = 'assets/javascripts/bootstrap/transition.js'
+
+scripts[] = js-min/waves.min.js
+scripts[] = js-min/app.min.js
+
+
+; ;-------------------------
+; ; METHOD 2: Bootstrap CDN
+; ;-------------------------
+;
+; Method 2 uses BootstrapCDN, the only thing you might need to provide here
+; is overrides to Bootstrap theme settings. Copy them here from the base theme
+; to override.

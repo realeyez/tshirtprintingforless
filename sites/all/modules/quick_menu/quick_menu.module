@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * objects and structure.
+ */
+
+function quick_menu_menu() {
+
+    global $user;
+
+    // Check to see if $user has the administrator role.
+    //kpr($user->roles);
+    if (user_access( 'administrator' )) {
+
+
+        $items['node/%node/fields'] = array(
+            'title' => 'Manage Fields',
+            'description' => 'Demonstrating secondary tabs.',
+            'page callback' => 'quick_menu_goto',
+            'page arguments' => array(1, 'fields'),
+            'access callback' => TRUE,
+            'file' => 'page.inc',
+            'weight' => 10,
+            'type' => MENU_LOCAL_TASK,
+        );
+        $items['node/%node/display'] = array(
+            'title' => 'Manage Display',
+            'description' => 'Demonstrating secondary tabs.',
+            'page callback' => 'quick_menu_goto',
+            'page arguments' => array(1, 'display'),
+            'access callback' => TRUE,
+            'file' => 'page.inc',
+            'weight' => 11,
+            'type' => MENU_LOCAL_TASK,
+        );
+        return $items;
+    }
+}

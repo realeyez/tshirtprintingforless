@@ -1,0 +1,227 @@
+@import "bootstrap/variables";
+
+.horizontal-tabs {
+   background: none;
+   border-radius: 6px;
+
+   ul.horizontal-tabs-list {
+
+
+   }
+   .horizontal-tabs-panes {
+      -webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+      box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+      .panel-body {
+         background: #fafafa;
+      }
+   }
+}
+
+
+.horizontal-tabs li.active a:after {
+   background: #fff;
+   color: $brand;
+   cursor: default;
+   z-index: 9;
+   position: absolute;
+
+}
+
+
+
+.horizontal-tabs li {
+   overflow: hidden;
+   margin-right: -3px;
+   padding-right: 6px;
+}
+
+.horizontal-tabs li a, .nav-tabs li  a {
+   font-weight: 600;
+   padding: 8px 15px 7px 15px;
+   display: block;
+   color: #fff;
+   text-shadow: 2px #000;
+   background: #b72323;
+   background: -moz-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($brand, 3%)), color-stop(100%, darken($brand, 10%)));
+   background: -webkit-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+   background: -o-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+   background: -ms-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+   background: linear-gradient(to bottom, $brand 0%,darken($brand, 10%) 100%);
+   border-top-left-radius: 5px;
+   border-top-right-radius: 7px;
+
+   text-transform: uppercase;
+   border: none!important;
+   :after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 1px;
+      right: -4px;
+      bottom: 0;
+      width: 14px;
+      height: 103%;
+      border-radius: 0 5px 0 0;
+
+      -moz-transform: skew(10deg, 5deg);
+      -ms-transform: skew(10deg, 5deg);
+      -o-transform: skew(10deg, 5deg);
+      -webkit-transform: skew(10deg, 5deg);
+      transform: skew(10deg, 5deg);
+      background: #b72323;
+      background: -moz-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($brand, 3%)), color-stop(100%, darken($brand, 10%)));
+      background: -webkit-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+      background: -o-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+      background: -ms-linear-gradient(top, $brand 0%, darken($brand, 10%) 100%);
+      background: linear-gradient(to bottom, $brand 0%,darken($brand, 10%) 100%);
+      -webkit-backface-visibility: hidden;
+   }
+}
+
+.horizontal-tabs li.active a {
+   :after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 1px;
+      right: -4px;
+      bottom: 0;
+      width: 14px;
+      height: 103%;
+      border-radius: 0 5px 0 0;
+
+      -moz-transform: skew(10deg, 5deg);
+      -ms-transform: skew(10deg, 5deg);
+      -o-transform: skew(10deg, 5deg);
+      -webkit-transform: skew(10deg, 5deg);
+      transform: skew(10deg, 5deg);
+      background: #fafafa!important;
+      -webkit-backface-visibility: hidden;
+   }
+}
+
+
+.horizontal-tabs li.active a, .horizontal-tabs li.active a:HOVER, .horizontal-tabs li.active a:after {
+   background: #fafafa;
+   color: $brand;
+   cursor: default;
+   z-index: 9;
+   position: relative;
+   &:AFTER {
+      background: #fff;
+      color: lighten($brand, 3%);
+   }
+}
+
+
+div.horizontal-tabs {
+   margin: 0 0 0 0;
+   padding: 0;
+   position: relative;
+   .panel {
+      margin-bottom: 0;
+   }
+   ul.horizontal-tabs-list {
+      margin-bottom: 0;
+      li {
+         background-color: none;
+      }
+   }
+   ul.horizontal-tabs-list :focus {
+      outline: none;
+   }
+   ul.horizontal-tabs-list li a:focus strong,
+   ul.horizontal-tabs-list li a:active strong,
+   ul.horizontal-tabs-list li a:hover strong {
+      text-decoration: none;
+      outline: none;
+   }
+   fieldset.horizontal-tabs-pane {
+      padding: 0;
+      border: 0;
+   }
+   .horizontal-tab-hidden {
+      display: block;
+      position: absolute;
+      top: -100000px;
+      width: 100%;
+   }
+}
+fieldset.horizontal-tabs-pane > legend,
+fieldset.vertical-tabs-pane fieldset.horizontal-tabs-pane > legend {
+   display: none;
+}
+
+.horizontal-tabs li a:HOVER {
+   background: $brand;
+   @include background(linear-gradient(top, lighten($brand, 10%), darken($brand, 0%)));
+   /* background: -moz-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($brand, 1%)), color-stop(100%, #b72323));
+    background: -webkit-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -o-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -ms-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: linear-gradient(to bottom, lighten($brand, 1%) 0%,$brand 100%);*/
+
+}
+
+.horizontal-tabs li a:HOVER:AFTER {
+   background: $brand;
+   @include background(linear-gradient(top, lighten($brand, 10%), darken($brand, 0%)));
+   /* background: -moz-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($brand, 1%)), color-stop(100%, #b72323));
+    background: -webkit-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -o-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: -ms-linear-gradient(top, lighten($brand, 1%) 0%, $brand 100%);
+    background: linear-gradient(to bottom, lighten($brand, 1%) 0%,$brand 100%);*/
+
+}
+
+.page-taxonomy .nav-tabs {
+   margin-left: 33px!important;
+}
+.nav-tabs {
+   margin-left: 8px;
+}
+
+.nav-tabs a {
+   @include opacity(0.7);
+
+}
+
+.nav-tabs a.active {
+   color: #fff!important;
+   @include opacity(1);
+
+}
+
+
+
+/*tab mixin*/
+
+#login-links {
+   a {
+      background: $brand!important;
+      border: none!important;
+   }
+}
+
+.horizontal-tabs-list {
+
+   li {
+      background-color: none!important;
+   }
+   a {
+      color: $gray;
+
+   }
+}
+
+.tabs--primary {
+
+   a {
+
+
+   }
+}

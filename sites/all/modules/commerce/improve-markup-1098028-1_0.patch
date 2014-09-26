@@ -1,0 +1,173 @@
+From 6e06b7422efccb28b626805bffcf476cb022027b Mon Sep 17 00:00:00 2001
+From: Helior Colorado <me@helior.info>
+Date: Mon, 30 Apr 2012 19:31:08 -0700
+Subject: [PATCH] Improved markup for checkout review pane
+
+---
+ modules/checkout/commerce_checkout.module          |   21 +++++++++-
+ .../checkout/includes/commerce_checkout.pages.inc  |   45 --------------------
+ .../theme/commerce-checkout-review.tpl.php         |   25 +++++++++++
+ modules/checkout/theme/commerce_checkout.theme.css |   29 -------------
+ 4 files changed, 45 insertions(+), 75 deletions(-)
+ create mode 100644 modules/checkout/theme/commerce-checkout-review.tpl.php
+
+diff --git a/modules/checkout/commerce_checkout.module b/modules/checkout/commerce_checkout.module
+index 919618e..008a7df 100644
+--- a/modules/checkout/commerce_checkout.module
++++ b/modules/checkout/commerce_checkout.module
+@@ -156,7 +156,8 @@ function commerce_checkout_theme() {
+     ),
+     'commerce_checkout_review' => array(
+       'render element' => 'form',
+-      'file' => 'includes/commerce_checkout.pages.inc',
++      'path' => drupal_get_path('module', 'commerce_checkout') . '/theme',
++      'template' => 'commerce-checkout-review',
+     ),
+     'commerce_checkout_help' => array(
+       'variables' => array('help' => NULL),
+@@ -873,3 +874,21 @@ function commerce_checkout_completion_message_default() {
+     return t('Your order is number [commerce-order:order-number]. You can view your order on your account page when logged in.');
+   }
+ }
++
++/**
++ * Preprocess function for theme_commerce_checkout_review.
++ * @see commerce-checkout-review.tpl.php
++ */
++function template_preprocess_commerce_checkout_review(&$variables) {
++  $variables['classes_array'][] = 'commerce-checkout-review-pane';
++  $variables['classes_array'][] = 'clearfix';
++
++  $panes = array();
++  foreach ($variables['form']['#data'] as $pane_id => $data) {
++    $panes[$pane_id] = array(
++      'title' => $data['title'],
++      'data' => $data['data'],
++    );
++  }
++  $variables['panes'] = $panes;
++}
+diff --git a/modules/checkout/includes/commerce_checkout.pages.inc b/modules/checkout/includes/commerce_checkout.pages.inc
+index 9caf81d..fc01bb5 100644
+--- a/modules/checkout/includes/commerce_checkout.pages.inc
++++ b/modules/checkout/includes/commerce_checkout.pages.inc
+@@ -383,48 +383,3 @@ function commerce_checkout_form_cancel_submit($form, &$form_state) {
+ 
+   $form_state['redirect'] = $form_state['cancel_redirect'];
+ }
+-
+-/**
+- * Themes the optional checkout review page data.
+- */
+-function theme_commerce_checkout_review($variables) {
+-  $form = $variables['form'];
+-
+-  // Turn the review data array into table rows.
+-  $rows = array();
+-
+-  foreach ($form['#data'] as $pane_id => $data) {
+-    // First add a row for the title.
+-    $rows[] = array(
+-      'data' => array(
+-        array('data' => $data['title'], 'colspan' => 2),
+-      ),
+-      'class' => array('pane-title', 'odd'),
+-    );
+-
+-    // Next, add the data for this particular section.
+-    if (is_array($data['data'])) {
+-      // If it's an array, treat each key / value pair as a 2 column row.
+-      foreach ($data['data'] as $key => $value) {
+-        $rows[] = array(
+-          'data' => array(
+-            array('data' => $key .':', 'class' => array('pane-data-key')),
+-            array('data' => $value, 'class' => array('pane-data-value')),
+-          ),
+-          'class' => array('pane-data', 'even'),
+-        );
+-      }
+-    }
+-    else {
+-      // Otherwise treat it as a block of text in its own row.
+-      $rows[] = array(
+-        'data' => array(
+-          array('data' => $data['data'], 'colspan' => 2, 'class' => array('pane-data-full')),
+-        ),
+-        'class' => array('pane-data', 'even'),
+-      );
+-    }
+-  }
+-
+-  return theme('table', array('rows' => $rows, 'attributes' => array('class' => array('checkout-review'))));
+-}
+diff --git a/modules/checkout/theme/commerce-checkout-review.tpl.php b/modules/checkout/theme/commerce-checkout-review.tpl.php
+new file mode 100644
+index 0000000..b370c74
+--- /dev/null
++++ b/modules/checkout/theme/commerce-checkout-review.tpl.php
+@@ -0,0 +1,25 @@
++<?php
++
++/**
++ * @file
++ * Default implementation of the shopping cart block template.
++ *
++ * Available variables:
++ * - $panes: An array of checkout panes containing title and data.
++ *
++ * Helper variables:
++ * - $form: The complete checkout review form array.
++ *
++ * @see template_preprocess()
++ * @see template_process()
++ */
++?>
++
++<div class="<?php print $classes;?>">
++  <?php foreach ($panes as $pane_id => $pane): ?>
++    <div class="pane <?php print $pane_id; ?>">
++      <h2 class="pane-title"><?php print $pane['title']; ?></h2>
++      <div class="pane-content"><?php print $pane['data']; ?></div>
++    </div>
++  <?php endforeach ?>
++</div>
+diff --git a/modules/checkout/theme/commerce_checkout.theme.css b/modules/checkout/theme/commerce_checkout.theme.css
+index d251529..98ad631 100644
+--- a/modules/checkout/theme/commerce_checkout.theme.css
++++ b/modules/checkout/theme/commerce_checkout.theme.css
+@@ -23,32 +23,3 @@
+   color: #018fe2;
+   text-decoration: underline;
+ }
+-
+-/**
+- * Tweak review page layout.
+- */
+-table.checkout-review .pane-title td {
+-  padding-left: 1em;
+-  font-weight: bold;
+-}
+-
+-table.checkout-review tr.pane-data {
+-  vertical-align: top;
+-}
+-
+-table.checkout-review .pane-data-key {
+-  font-weight: bold;
+-  text-align: right;
+-  white-space: nowrap;
+-  padding-left: 3em;
+-  width: 50%;
+-}
+-
+-table.checkout-review .pane-data-value {
+-  padding-right: 3em;
+-}
+-
+-table.checkout-review .pane-data-full {
+-  padding-left: 1em;
+-  padding-right: 1em;
+-}
+-- 
+1.7.6
+

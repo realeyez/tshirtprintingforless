@@ -1,0 +1,93 @@
+
+.carousel-vertical {
+  .carousel {
+    .carousel-inner {
+      height: 100%;
+    }
+    .item {
+      -webkit-transition: 0.6s ease-in-out top;
+      -moz-transition: 0.6s ease-in-out top;
+      -ms-transition: 0.6s ease-in-out top;
+      -o-transition: 0.6s ease-in-out top;
+      transition: 0.6s ease-in-out top;
+    }
+    .active {
+      top: 0;
+    }
+    .next {
+      top: 400px;
+      @media (max-width: $screen-xs-max) {
+        top: 260px;
+      }
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        top: 380px;
+      }
+
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        top: 480px;
+      }
+
+      @media (min-width: $screen-lg-min) {
+        top: 500px;
+      }
+    }
+    .prev {
+      top: -400px;
+      @media (max-width: $screen-xs-max) {
+        top: -260px;
+      }
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        top: -380px;
+      }
+
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        top: -480px;
+      }
+
+      @media (min-width: $screen-lg-min) {
+        top: -500px;
+      }
+    }
+    .next.left,
+    .prev.right {
+      top: 0;
+    }
+    .active.left {
+      top: -400px;
+    }
+    .active.right {
+      top: 400px;
+    }
+    .item {
+      left: 0;
+    }
+  }
+}
+
+.carousel-fade {
+  .carousel-inner .item {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+  }
+  .carousel-inner .active {
+    opacity: 1;
+  }
+  .carousel-inner .active.left,
+  .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+  .carousel-inner .next.left,
+  .carousel-inner .prev.right {
+    opacity: 1;
+  }
+  .carousel-fade .carousel-control {
+    z-index: 2;
+  }
+}

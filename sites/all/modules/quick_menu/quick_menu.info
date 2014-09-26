@@ -1,0 +1,5 @@
+name = Quick Menu
+description = Adds Manage Display and Manage Fields tab to node
+core = 7.x
+
+

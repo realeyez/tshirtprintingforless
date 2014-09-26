@@ -1,0 +1,22 @@
+{
+    "name": "ThemeName",
+    "author": "David Allard",
+    "homepage": "http://homepage.com",
+    "private": true,
+    "engines": {
+        "node": "0.10.29"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-jshint":         "*",
+        "grunt-contrib-compass":         "*",
+        "grunt-contrib-cssmin":         "*",
+        "grunt-contrib-sass":           "*",
+        "grunt-contrib-uglify":         "*",
+        "grunt-contrib-watch":          "*",
+        "grunt-cssc":                   "*",
+        "grunt-htmlhint":               "*",
+        "matchdep":                     "*",
+        "grunt-contrib-clean":          "~0.4.0"
+    }
+}
